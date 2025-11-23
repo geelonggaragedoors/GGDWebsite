@@ -4,9 +4,10 @@ builder = "nixpacks"
 [deploy]
 startCommand = "npm start"
 healthcheckPath = "/"
-healthcheckTimeout = 100
+healthcheckTimeout = 300
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10
 
 [env]
 NODE_ENV = "production"
+NPM_CONFIG_LEGACY_PEER_DEPS = "true"
