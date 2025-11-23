@@ -1,0 +1,5 @@
+{
+  "name": "GGD Visualizer",
+  "description": "Visualize different garage door styles and Colorbond colors on your home using Gemini AI.",
+  "requestFramePermissions": []
+}

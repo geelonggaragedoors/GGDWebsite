@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found</title>
+    <link rel="canonical" href="https://www.gomerlin.com.au/_errors/404" />
+    <meta name="robots" content="index,follow" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Bundled custom styles -->
+    <link rel="stylesheet" href="/css/bundle.min.css?v=UpGnSG8T5EWdWwbQXYy2jXBEyipGns9mniMtBc8EGbQ" />
+    
+     <!-- EPiServer required resources -->
+    
+    <!-- Forms styling - AFTER EPiServer resources to override them -->
+    <link rel="stylesheet" href="/css/forms.css?v=CZJNBcX7bfFCzgHSAW2jSsDddP5JqGXiYYF48pWoUTo" />
+   
+    <!-- GA4 dataLayer initializer and ecommerce helper (load early) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.CHA_TRACK = window.CHA_TRACK || {};
+        CHA_TRACK.currency = 'AUD';
+    </script>
+    <script src="/js/ga4-ecommerce.js?v=u7LWCgbtoK_nl1rUYPeHHFt603BAMOaxuac9YANz0PI"></script>
+
+    <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-T53N8TX');</script>
+    <!-- End Google Tag Manager -->
+
+</head>
+<body class="merlin-site">
+    <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T53N8TX"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+ 
+
+    <main role="main">
+        
+<section class="container">
+    <h1>Page not found (404)</h1>
+    <p>We couldn&#x27;t find the page you&#x27;re looking for.</p>
+</section>
+
+
+
+    </main>
+
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery (required for some EPiServer functionality) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+     <!-- EPiServer required resources -->
+    <!-- Site-specific styles loaded last to allow overrides -->
+    <link rel="stylesheet" href="/sites/merlin/css/main.css?v=DIy_sL8dgfgDuLvRYqaeTNSfI9XtXYWyDTyneTvbLc8" />
+    <script src="/js/product-selector.js?v=ktlkauJygvzyTUSsDMt4xDwj2Cw1JxrrqqdzmH1Wr7A"></script>
+    <script src="/js/search-suggestions.js?v=ciIoZ8I8LUBR7YY7PTtG-2ibz5-hkQw6T4gPhqENZh0"></script>
+    <script>
+        (function () {
+            async function fetchCartCount() {
+                try {
+                    const res = await fetch('/api/cart/get', { credentials: 'same-origin' });
+                    if (!res.ok) return;
+                    const json = await res.json();
+                    const count = (json && json.success && json.cart)
+                        ? (json.cart.totalItemCount || (Array.isArray(json.cart.items) ? json.cart.items.reduce(function (s, it) { return s + (it.quantity || 0); }, 0) : 0))
+                        : 0;
+                    updateCartBadge(count);
+                } catch (_) { }
+            }
+
+            function updateCartBadge(count) {
+                var badges = document.querySelectorAll('[data-cart-badge]');
+                badges.forEach(function (el) {
+                    if (count > 0) {
+                        el.textContent = count;
+                        el.style.display = 'inline-flex';
+                    } else {
+                        el.style.display = 'none';
+                    }
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', fetchCartCount);
+            window.addEventListener('cartUpdated', fetchCartCount);
+        })();
+    </script>
+    
+</body>
+</html> 
