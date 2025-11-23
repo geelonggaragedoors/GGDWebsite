@@ -8,7 +8,7 @@ let client: GoogleGenAI | null = null;
 const getClient = (): GoogleGenAI => {
   if (!client) {
     // User provided valid API key
-    const apiKey = "AIzaSyBvvG4Xx_PBhA4aiaIQr-f4rxO9w2KyI84"; 
+    const apiKey = import.meta.env.VITE_API_KEY || process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.error("API_KEY is missing.");
       throw new Error("API Key not found");
