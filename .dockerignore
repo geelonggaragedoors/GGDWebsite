@@ -1,0 +1,10 @@
+node_modules
+dist
+.git
+.env
+.env.*
+*.log
+README.md
+ROADMAP.md
+nixpacks.toml
+railway.toml
