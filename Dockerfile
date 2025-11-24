@@ -31,5 +31,6 @@ RUN addgroup -g 1001 -S nodejs && \
 RUN chown -R viteuser:nodejs /app
 USER viteuser
 
-# Start the application with explicit port handling
-CMD ["sh", "-c", "echo 'Starting on port:' ${PORT:-3000} && npm start"]
+# Start the application directly with vite preview
+# We use the shell form to allow variable expansion of $PORT
+CMD ["sh", "-c", "npx vite preview --host 0.0.0.0 --port ${PORT:-3000}"]
