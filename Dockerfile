@@ -17,8 +17,11 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Note: We do NOT prune devDependencies because we need 'vite' for the preview server
-# RUN npm prune --production
+# Remove devDependencies to reduce image size (safe now that we don't use vite preview)
+RUN npm prune --production
+
+# Install 'serve' for production static file serving
+RUN npm install -g serve
 
 # Expose port 3000 (Railway will override with PORT env var)
 EXPOSE 3000
@@ -31,6 +34,8 @@ RUN addgroup -g 1001 -S nodejs && \
 RUN chown -R viteuser:nodejs /app
 USER viteuser
 
-# Start the application directly with vite preview
-# We use the shell form to allow variable expansion of $PORT
-CMD ["sh", "-c", "npx vite preview --host 0.0.0.0 --port ${PORT:-3000}"]
+# Start the application using 'serve'
+# -s: Single-page application mode (redirects 404s to index.html)
+# -l: Listen on specified port
+# -n: No clipboard (prevents errors in non-interactive environments)
+CMD ["sh", "-c", "serve -s dist -l ${PORT:-3000} -n"]
