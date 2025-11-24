@@ -17,8 +17,8 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Remove devDependencies to reduce image size
-RUN npm prune --production
+# Note: We do NOT prune devDependencies because we need 'vite' for the preview server
+# RUN npm prune --production
 
 # Expose port 3000 (Railway will override with PORT env var)
 EXPOSE 3000
